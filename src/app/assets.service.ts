@@ -24,5 +24,6 @@ export class FoldersInfo {
   JSON2: any;
   images1: File[]
   images2: File[]
+  hey : any;
 }
 

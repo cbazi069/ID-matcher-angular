@@ -46,3 +46,15 @@ testem.log
 Thumbs.db
 package.json
 package-lock.json
+/.vs
+/e2e
+/node_modules
+.editorconfig
+angular.json
+browserslist
+karma.conf.js
+README.md
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
+tslint.json
