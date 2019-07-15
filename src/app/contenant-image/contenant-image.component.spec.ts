@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ContenantImageComponent } from './contenant-image.component';
 
 describe('ContenantImageComponent', () => {

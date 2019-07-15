@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { numberItem } from '../card-import/card-import.component'
+import { FoldersInfo } from '../assets.service';
   
 @Component({
   selector: 'app-imports',
@@ -12,5 +13,4 @@ export class ImportsComponent implements OnInit {
   num2: numberItem = { num: 2 }
   ngOnInit() {
   }
-
 }
