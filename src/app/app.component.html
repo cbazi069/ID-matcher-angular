@@ -10,8 +10,12 @@
         <div *ngIf="menu.selectedItem.name == 'Imports'">
             <app-imports></app-imports>
         </div>
+        <div *ngIf="menu.selectedItem.name == 'ID matching'">
+          <app-contenant-image></app-contenant-image>
+        </div>
     </div>
-    <!--<footer class="footer">
+    <!-- your footer here  -->
+    <footer class="footer">
       <div class="container-fluid">
         <nav class="float-left">
           <ul>
@@ -29,9 +33,8 @@
           </script>, made with <i class="material-icons">favorite</i> by
           <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
         </div>
-        <!-- your footer here 
       </div>
-    </footer>-->
+    </footer>
   </div>
 </div>
 
