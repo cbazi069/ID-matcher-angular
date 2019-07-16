@@ -1,5 +1,5 @@
 
-export class Person{
+export class Perdson{
   id_pers_1: number = 0;
   id_pers_2: number = 0;
   annotation_data: JSON;
@@ -17,10 +17,4 @@ export class Person{
   getPersonJson() {
     return { ten_frames_num: this.TenFramesNum, ten_frames_name: this.TenFramesName }
   }
-}
-
-export class Window {
-  personLeft: Person[]
-  personRight: Person[]
-
 }

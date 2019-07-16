@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FoldersInfo } from '../assets.service';
+import { FoldersInfo, Algo } from '../assets.service';
 
 @Component({
   selector: 'app-card-import',
@@ -12,7 +12,7 @@ export class CardImportComponent implements OnInit {
   checkJson = "";
   checkFolder = "";
 
-  constructor(private infos: FoldersInfo) {
+  constructor(private infos: FoldersInfo, private algo: Algo) {
   }
 
   UploadedJson(event): void {
@@ -21,9 +21,11 @@ export class CardImportComponent implements OnInit {
     fileReader.onload = () => {
       if (this.info.num == 1) {
         this.infos.JSON1 = JSON.parse(fileReader.result.toString());
+        this.infos.People1 = this.algo.exportPeopleArray(this.infos.JSON1);
       }
       else {
         this.infos.JSON2 = JSON.parse(fileReader.result.toString());
+        this.infos.People2 = this.algo.exportPeopleArray(this.infos.JSON2);
       }
       this.checkJson = 'check';
     }

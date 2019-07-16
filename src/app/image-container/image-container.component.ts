@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FoldersInfo } from '../assets.service';
 
 @Component({
   selector: 'app-image-container',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private infos: FoldersInfo) { }
 
   ngOnInit() {
+    console.log(this.infos);
   }
 
 }
