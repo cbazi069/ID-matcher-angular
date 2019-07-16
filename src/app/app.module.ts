@@ -8,9 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ImportsComponent } from './imports/imports.component';
 import { CardImportComponent } from './card-import/card-import.component';
 import { CardComponent } from './card/card.component';
-import { ImageContainerComponent } from './image-container/image-container.component';
 import { ButtonsContainerComponent } from './buttons-container/buttons-container.component';
 import { ContenantImageComponent } from './contenant-image/contenant-image.component';
+import { Folder1ImageContenantComponent } from './folder1-image-contenant/folder1-image-contenant.component';
+import { Folder2ImageContenantComponent } from './folder2-image-contenant/folder2-image-contenant.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,10 @@ import { ContenantImageComponent } from './contenant-image/contenant-image.compo
     ImportsComponent,
     CardImportComponent,
     CardComponent,
-    ImageContainerComponent,
     ButtonsContainerComponent,
-    ContenantImageComponent
+    ContenantImageComponent,
+    Folder1ImageContenantComponent,
+    Folder2ImageContenantComponent
   ],
   imports: [
     BrowserModule,

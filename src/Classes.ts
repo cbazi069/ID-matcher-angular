@@ -19,8 +19,4 @@ export class Person{
   }
 }
 
-export class Window {
-  personLeft: Person[]
-  personRight: Person[]
 
-}
