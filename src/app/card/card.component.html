@@ -1,8 +1,16 @@
 <div class="card card-chart">
   <div class="card-header card-header-warning">
-    <div class="ct-chart" id="{{info.title}}">
-      <div *ngIf="info.folderindication== 1"><app-folder1-image-contenant></app-folder1-image-contenant></div>
-      <div *ngIf="info.folderindication == 2"><app-folder2-image-contenant></app-folder2-image-contenant></div>
+    <div class="ct-chart">
+      <image-cropper [imageChangedEvent]="imageChangedEvent"
+                     [maintainAspectRatio]="true"
+                     [aspectRatio]="4 / 3"
+                     [resizeToWidth]="128"
+                     format="png"
+                     (imageCropped)="imageCropped($event)"
+                     (imageLoaded)="imageLoaded()"
+                     (cropperReady)="cropperReady()"
+                     (loadImageFailed)="loadImageFailed()"></image-cropper>
+      <img [src]="url" height="300"> <br />
     </div>
   </div>
   <div class="card-body">

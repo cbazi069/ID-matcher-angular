@@ -12,6 +12,7 @@ import { ButtonsContainerComponent } from './buttons-container/buttons-container
 import { ContenantImageComponent } from './contenant-image/contenant-image.component';
 import { Folder1ImageContenantComponent } from './folder1-image-contenant/folder1-image-contenant.component';
 import { Folder2ImageContenantComponent } from './folder2-image-contenant/folder2-image-contenant.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Folder2ImageContenantComponent } from './folder2-image-contenant/folder
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
