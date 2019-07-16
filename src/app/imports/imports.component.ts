@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { numberItem } from '../card-import/card-import.component'
-import { FoldersInfo } from '../assets.service';
+import { AssetsService } from '../assets.service';
   
 @Component({
   selector: 'app-imports',

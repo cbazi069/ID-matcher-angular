@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FoldersInfo } from '../assets.service';
+import { AssetsService } from '../assets.service';
 
 @Component({
   selector: 'app-folder2-image-contenant',
@@ -7,10 +7,10 @@ import { FoldersInfo } from '../assets.service';
   styleUrls: ['./folder2-image-contenant.component.css']
 })
 export class Folder2ImageContenantComponent implements OnInit {
-  constructor(private infos: FoldersInfo) { }
+  constructor(private infos: AssetsService) { }
   url = '';
   ngOnInit() {
-    if (this.infos.images2 && this.infos.images2[0]) {
+   /* if (this.infos.images2 && this.infos.images2[0]) {
       var reader = new FileReader();
 
       reader.readAsDataURL(this.infos.images2[0]); // read file as data url
@@ -18,7 +18,7 @@ export class Folder2ImageContenantComponent implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.url = event.target["result"];
       }
-    }
+    }*/
   }
 
 }

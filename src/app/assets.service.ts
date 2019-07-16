@@ -19,74 +19,118 @@ export class MenuItem {
 @Injectable({
   providedIn: 'root'
 })
-export class FoldersInfo {
-  JSON1 : any;
-  JSON2: any;
-  frames1: Frame[];
-  frames2: Frame[];
-  People1: Person[];
-  People2: Person[];
+export class AssetsService {
+  Folder1: folderInfo = new folderInfo();
+  Folder2: folderInfo = new folderInfo();
 }
-@Injectable({
-  providedIn: 'root'
-})
-export class Algo {
 
-  exportPeopleArray(Json: any): Person[] {
+class folderInfo {
+  json: any;
+  frames: Frame[] = [];
+  People: Person[] = [];
+
+  private numAction: number = 0;
+
+  setJson(json: any) {
+    this.numAction++;
+    this.json = json;
+    if (this.numAction == 2) {
+      this.People = this.exportPeopleArray()
+      console.log(this.People)
+    }
+  }
+  setFrames(files: File[]) {
+    this.numAction++;
+    this.frames = this.exportFrame(files);
+    if (this.numAction == 2) {
+      this.People = this.exportPeopleArray()
+      console.log(this.People)
+    }
+  }
+
+  exportPeopleArray(): Person[] {
     var People = [];
-    for (var frame in Json) {
-      for (var annotation in Json[frame].annotations) {
-        if (Json[frame].annotations[annotation].length != 0) {
-          var person = new Person(Json[frame].annotations[annotation]);
+    for (var frame in this.json) {
+      for (var annotation in this.json[frame].annotations) {
+        if (this.json[frame].annotations[annotation].length != 0) {
+          var person = new Person(this.json[frame].annotations[annotation].id);
           if (!person.IsAlreadyInArray(People)) {
+            person.annotations.push(this.json[frame].annotations[annotation])
+            person.frames.push(this.findFrameWithName(frame))
             People.push(person)
           }
+          else {
+            var rightperson = this.findPersonwithId(person.id,People);
+            People[rightperson].annotations.push(this.json[frame].annotations[annotation])
+            People[rightperson].frames.push(this.findFrameWithName(frame))
+          }
+
         }
       }
     }
     return People
-    
+
   }
   exportFrame(files: File[]): Frame[] {
     var array = [];
-    for (var i = 0; i > files.length; i++) {
+    for (var i = 0; i < files.length; i++) {
       array.push(new Frame(files[i], i));
     }
     return array;
   }
-  findFrameWithName(name: string, array: Frame[]): Frame {
-    for (var i of array) {
+
+  //////////////////////////searching method/////////////////
+  findFrameWithName(name: string): Frame {
+    for (var i of this.frames) {
       if (i.name == name) {
         return i;
       }
     }
   }
+  findFrameWithIndex(index: number): Frame {
+    for (var i of this.frames) {
+      if (i.index == index) {
+        return i;
+      }
+    }
+  }
+  findPersonwithId(id: number, people: Person[]): number {
+    for (var i = 0; i < people.length;i++) {
+      if (people[i].id == id) {
+        return i;
+      }
+    }
+  }
 }
-export class Person {
-  annotation: any;
-  isARealPerson: boolean = true;
-  frame: Frame;
 
-  constructor(annotation: any) {
-    this.annotation = annotation;
+
+
+export class Person {
+  id : number
+  annotations: any = [];
+  frames: Frame[] = [];
+
+  constructor(id: number) {
+    this.id = id;
   }
 
   IsAlreadyInArray(People: Person[]): boolean {
     var isIn = false;
     for (let i of People) {
-      if (i.annotation.id == this.annotation.id) {
+      if (i.id == this.id) {
         isIn = true;
       }
     }
     return isIn;
   }
 }
+
+
 export class Frame {
   name: string;
   index: number;
   file: File;
-  constructor(file: File, index: number) {
- 
+  constructor(file: File, index: number) { 
     this.index = index;
     this.file = file;
     this.name = this.file.name;

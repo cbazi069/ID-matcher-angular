@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FoldersInfo, Algo } from '../assets.service';
+import { AssetsService} from '../assets.service';
 
 @Component({
   selector: 'app-card-import',
@@ -12,20 +12,20 @@ export class CardImportComponent implements OnInit {
   checkJson = "";
   checkFolder = "";
 
-  constructor(private infos: FoldersInfo, private algo: Algo) {
+  constructor(private assets: AssetsService) {
   }
 
+
+  ///////////////////////////////////Upload JSON//////////////////////////////////
   UploadedJson(event): void {
     const fileReader = new FileReader();
     fileReader.readAsText(event.target.files[0], "UTF-8");
     fileReader.onload = () => {
       if (this.info.num == 1) {
-        this.infos.JSON1 = JSON.parse(fileReader.result.toString());
-        this.infos.People1 = this.algo.exportPeopleArray(this.infos.JSON1);
+        this.assets.Folder1.setJson(JSON.parse(fileReader.result.toString()));
       }
       else {
-        this.infos.JSON2 = JSON.parse(fileReader.result.toString());
-        this.infos.People2 = this.algo.exportPeopleArray(this.infos.JSON2);
+        this.assets.Folder2.setJson(JSON.parse(fileReader.result.toString()));
       }
       this.checkJson = 'check';
     }
@@ -34,14 +34,14 @@ export class CardImportComponent implements OnInit {
     }
   }
 
-
+///////////////////////////////////Upload Images//////////////////////////////////
   UploadedImages(event): void {
     this.checkFolder = 'check';
     if (this.info.num == 1) {
-      this.infos.frames1 = this.algo.exportFrame(event.target.files);
+      this.assets.Folder1.setFrames(event.target.files);
     }
     else {
-      this.infos.frames2 = this.algo.exportFrame(event.target.files);
+      this.assets.Folder2.setFrames(event.target.files);
     }
   }
 
