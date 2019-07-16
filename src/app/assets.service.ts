@@ -22,8 +22,8 @@ export class MenuItem {
 export class FoldersInfo {
   JSON1 : any;
   JSON2: any;
-  images1: File[];
-  images2: File[];
+  frames1: Frame[];
+  frames2: Frame[];
   People1: Person[];
   People2: Person[];
 }
@@ -31,6 +31,7 @@ export class FoldersInfo {
   providedIn: 'root'
 })
 export class Algo {
+
   exportPeopleArray(Json: any): Person[] {
     var People = [];
     for (var frame in Json) {
@@ -38,20 +39,33 @@ export class Algo {
         if (Json[frame].annotations[annotation].length != 0) {
           var person = new Person(Json[frame].annotations[annotation]);
           if (!person.IsAlreadyInArray(People)) {
-            person.frameName = frame;
             People.push(person)
           }
         }
       }
     }
     return People
+    
+  }
+  exportFrame(files: File[]): Frame[] {
+    var array = [];
+    for (var i = 0; i > files.length; i++) {
+      array.push(new Frame(files[i], i));
+    }
+    return array;
+  }
+  findFrameWithName(name: string, array: Frame[]): Frame {
+    for (var i of array) {
+      if (i.name == name) {
+        return i;
+      }
+    }
   }
 }
 export class Person {
   annotation: any;
   isARealPerson: boolean = true;
-  frameName: string;
-  frameNumber: number;
+  frame: Frame;
 
   constructor(annotation: any) {
     this.annotation = annotation;
@@ -65,6 +79,17 @@ export class Person {
       }
     }
     return isIn;
+  }
+}
+export class Frame {
+  name: string;
+  index: number;
+  file: File;
+  constructor(file: File, index: number) {
+ 
+    this.index = index;
+    this.file = file;
+    this.name = this.file.name;
   }
 }
 

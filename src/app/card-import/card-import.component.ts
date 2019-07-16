@@ -38,10 +38,10 @@ export class CardImportComponent implements OnInit {
   UploadedImages(event): void {
     this.checkFolder = 'check';
     if (this.info.num == 1) {
-      this.infos.images1 = event.target.files;
+      this.infos.frames1 = this.algo.exportFrame(event.target.files);
     }
     else {
-      this.infos.images2 = event.target.files;
+      this.infos.frames2 = this.algo.exportFrame(event.target.files);
     }
   }
 
