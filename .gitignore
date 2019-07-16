@@ -46,9 +46,9 @@ testem.log
 Thumbs.db
 package.json
 package-lock.json
-/.vs
-/e2e
-/node_modules
+.vs/
+e2e/
+node_modules/
 .editorconfig
 angular.json
 browserslist

@@ -7,7 +7,6 @@ import { FoldersInfo } from '../assets.service';
   styleUrls: ['./folder1-image-contenant.component.css']
 })
 export class Folder1ImageContenantComponent implements OnInit {
-
   constructor(private infos: FoldersInfo) { }
   url = '';
   ngOnInit() {
@@ -17,7 +16,7 @@ export class Folder1ImageContenantComponent implements OnInit {
       reader.readAsDataURL(this.infos.images1[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
+        this.url = event.target["result"];
       }
     }
   }

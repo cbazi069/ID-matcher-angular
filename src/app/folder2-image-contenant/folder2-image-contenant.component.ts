@@ -16,7 +16,7 @@ export class Folder2ImageContenantComponent implements OnInit {
       reader.readAsDataURL(this.infos.images2[0]); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
+        this.url = event.target["result"];
       }
     }
   }
