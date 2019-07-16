@@ -8,8 +8,8 @@ import { Menu } from '../assets.service';
   styleUrls: ['./contenant-image.component.css']
 })
 export class ContenantImageComponent implements OnInit {
-  info1: CardInfo = { title: "Images on the first JSON file", legend: "Choose images were you can see that people are the same and go to the right cell" }
-  info2: CardInfo = { title: "Images on the second JSON file", legend: "Choose images were you can see that people are the same and choose the action with the button bellow." }
+  info1: CardInfo = { title: "Images on the first JSON file", legend: "Choose images were you can see that people are the same and go to the right cell", folderindication: 1 }
+  info2: CardInfo = { title: "Images on the second JSON file", legend: "Choose images were you can see that people are the same and choose the action with the button bellow.", folderindication: 2 }
  
 
   constructor(private menu: Menu) { }

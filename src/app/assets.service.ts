@@ -22,8 +22,7 @@ export class MenuItem {
 export class FoldersInfo {
   JSON1 : any;
   JSON2: any;
-  images1: File[]
+  images1: File[];
   images2: File[]
-  hey : any;
 }
 
