@@ -16,4 +16,5 @@ export class CardComponent implements OnInit {
 export class CardInfo {
   title: string;
   legend: string;
+  folderindication: number;
 }
