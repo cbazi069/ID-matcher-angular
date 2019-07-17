@@ -8,38 +8,33 @@ import { AssetsService, Person } from '../assets.service';
 })
 export class ImageDisplayComponent implements OnInit {
   @Input() personToDisplay: Person;
-  myStyle: any;
+  myStyle: any = {};
   url = '';
-  
+
   constructor() {
   }
 
   ngOnInit() {
     var reader = new FileReader();
-    reader.readAsDataURL(this.personToDisplay.frames[20].file); // read file as data url
+    reader.readAsDataURL(this.personToDisplay.frames[40].file); // read file as data url
     reader.onload = (event) => { // called once readAsDataURL is completed
-    this.url = event.target["result"];
+      this.url = event.target["result"];
     }
-    //this.CropingXYtoPixels();
+    this.CropingXYtoPixels();
   }
 
   CropingXYtoPixels() {
-    var annotation = this.personToDisplay.annotations[20];
-    var image_height = 480;
-    var image_width = 640;
+    var annotation = this.personToDisplay.annotations[40];
     var height = annotation.height;
     var width = annotation.width;
     var x = annotation.x;
     var y = annotation.y;
-    var leftcrop = -x;
-    var rightcrop = -(image_width - x - width);
-    var bottomcrop = -(image_height - y - height);
-    var topcrop = -y
     this.myStyle = {
-      "margin-top": topcrop.toString() + "px",
-      "margin-left": leftcrop.toString() + "px",
-      "margin-right": rightcrop.toString() + "px",
-      "margin-bottom": bottomcrop.toString() + "px"
+      "object - fit": "cover",
+      "object - position": x.toString()+"px "+y.toString()+"px",
+      "width": width.toString() +"px",
+      "height": height.toString() +"px",
     }
+    console.log(this.myStyle);
   }
 }
