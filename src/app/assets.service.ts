@@ -22,6 +22,7 @@ export class MenuItem {
 export class AssetsService {
   Folder1: folderInfo = new folderInfo();
   Folder2: folderInfo = new folderInfo();
+  SamesID: SamePerson[] = []
 }
 
 class folderInfo {
@@ -109,6 +110,7 @@ export class Person {
   id : number
   annotations: any = [];
   frames: Frame[] = [];
+  used: boolean;
 
   constructor(id: number) {
     this.id = id;
@@ -135,5 +137,14 @@ export class Frame {
     this.file = file;
     this.name = this.file.name;
   }
+}
+export class SamePerson {
+  PeopleFromFolder1: Person[];
+  PeopleFromFolder2: Person[];
+  constructor(PersFold1: Person[], PersFold2: Person[]) {
+    this.PeopleFromFolder1 = PersFold1;
+    this.PeopleFromFolder2 = PersFold2;
+  }
+
 }
 

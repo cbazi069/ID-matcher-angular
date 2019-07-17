@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardInfo } from '../card/card.component';
-import { Menu } from '../assets.service';
+import { Menu, AssetsService } from '../assets.service';
 
 @Component({
   selector: 'app-contenant-image',
@@ -8,11 +8,11 @@ import { Menu } from '../assets.service';
   styleUrls: ['./contenant-image.component.css']
 })
 export class ContenantImageComponent implements OnInit {
-  info1: CardInfo = { title: "Images on the first JSON file", legend: "Choose images were you can see that people are the same and go to the right cell", folderindication: 1 }
-  info2: CardInfo = { title: "Images on the second JSON file", legend: "Choose images were you can see that people are the same and choose the action with the button bellow.", folderindication: 2 }
+  info1: CardInfo = new CardInfo("Images on the first JSON file", "Choose images were you can see that people are the same and go to the right cell", 1, this.assets);
+  info2: CardInfo = new CardInfo("Images on the second JSON file", "Choose images were you can see that people are the same and choose the action with the button bellow.", 2, this.assets);
  
 
-  constructor(private menu: Menu) { }
+  constructor(private menu: Menu, private assets: AssetsService) { }
 
   ngOnInit() {
   }
