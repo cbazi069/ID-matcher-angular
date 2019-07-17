@@ -1,22 +1,11 @@
 <div class="card card-chart">
-  <div class="card-header card-header-warning">
-    <div class="ct-chart">
-      <image-cropper [imageChangedEvent]="imageChangedEvent"
-                     [maintainAspectRatio]="true"
-                     [aspectRatio]="4 / 3"
-                     [resizeToWidth]="128"
-                     format="png"
-                     (imageCropped)="imageCropped($event)"
-                     (imageLoaded)="imageLoaded()"
-                     (cropperReady)="cropperReady()"
-                     (loadImageFailed)="loadImageFailed()"></image-cropper>
-      <img [src]="url" height="300"> <br />
-    </div>
+  <div class="card-header card-header-warning" style="overflow:hidden;">
+    <app-image-display></app-image-display>
   </div>
   <div class="card-body">
-    <h4 class="card-title">{{info.title}}</h4>
+    <h4 class="card-title">{{infosfromthecard.title}}</h4>
   </div>
   <div class="card-footer">
-    <p>{{info.legend}}</p>
+    <p>{{infosfromthecard.legend}}</p>
   </div>
 </div>

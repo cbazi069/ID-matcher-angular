@@ -13,23 +13,7 @@ export class CardComponent implements OnInit {
 
   constructor(private infos: AssetsService) { }
   url = '';
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
-  fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
-  }
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
-  }
-  imageLoaded() {
-    // show cropper
-  }
-  cropperReady() {
-    // cropper ready
-  }
-  loadImageFailed() {
-    // show message
-  }
+  
   ngOnInit() {
     if (this.infosfromthecard.folderindication == 1) {
       if (this.infos.Folder1.People[0].frames[0].file) {
@@ -42,7 +26,7 @@ export class CardComponent implements OnInit {
         }
       }
     }
-    if (this.infosfromthecard.folderindication == 2) {
+    /*if (this.infosfromthecard.folderindication == 2) {
       if (this.infos.Folder2.People[0].frames[0].file) {
         var reader = new FileReader();
 
@@ -52,7 +36,7 @@ export class CardComponent implements OnInit {
           this.url = event.target["result"];
         }
       }
-    }
+    }*/
   }
 
 }
