@@ -15,8 +15,9 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.personToDisplay);
     var reader = new FileReader();
-    reader.readAsDataURL(this.personToDisplay.frames[60].file); // read file as data url
+    reader.readAsDataURL(this.personToDisplay.frames[1].file); // read file as data url
     reader.onload = (event) => { // called once readAsDataURL is completed
       this.url = event.target["result"];
     }
@@ -24,7 +25,7 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   CropingXYtoPixels() {
-    var annotation = this.personToDisplay.annotations[60];
+    var annotation = this.personToDisplay.annotations[1];
     var height = annotation.height;
     var width = annotation.width;
     var x = -annotation.x;
@@ -35,6 +36,5 @@ export class ImageDisplayComponent implements OnInit {
       "width": width.toString() +"px",
       "height": height.toString() +"px",
     }
-    console.log(this.myStyle);
   }
 }

@@ -1,19 +1,25 @@
 <div class="card card-chart">
   <div class="card-header card-header-warning">
     <div class="row">
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[0]"></app-image-display>
-      <!--<app-image-display [personToDisplay]="infosfromthecard.personToDisplay[1]"></app-image-display>
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[2]"></app-image-display>-->
+      <div class="col-12 d-flex justify-content-around">
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[0]"></app-image-display>
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[1]"></app-image-display>
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[2]"></app-image-display>
+      </div>
     </div>
-    <!--<div class="row" style="overflow:hidden;">
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[3]"></app-image-display>
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[4]"></app-image-display>
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[5]"></app-image-display>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-around">
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[3]"></app-image-display>
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[4]"></app-image-display>
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[5]"></app-image-display>
+      </div>
     </div>
-    <div class="row" style="overflow:hidden;">
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[6]"></app-image-display>
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[7]"></app-image-display>
-      <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[8]"></app-image-display>
+    <!--<div class="row">
+      <div class="col-12 d-flex justify-content-around">
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[6]"></app-image-display>
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[7]"></app-image-display>
+        <app-image-display [personToDisplay]="infosfromthecard.personToDisplay[8]"></app-image-display>
+      </div>
     </div>-->
   </div>
   <div class="card-body">
