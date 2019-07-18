@@ -36,16 +36,14 @@ class folderInfo {
     this.numAction++;
     this.json = json;
     if (this.numAction == 2) {
-      this.People = this.exportPeopleArray()
-      console.log(this.People)
+      this.People = this.exportPeopleArray();
     }
   }
   setFrames(files: File[]) {
     this.numAction++;
     this.frames = this.exportFrame(files);
     if (this.numAction == 2) {
-      this.People = this.exportPeopleArray()
-      console.log(this.People)
+      this.People = this.exportPeopleArray();
     }
   }
 
@@ -56,16 +54,19 @@ class folderInfo {
         if (this.json[frame].annotations[annotation].length != 0) {
           var person = new Person(this.json[frame].annotations[annotation].id);
           if (!person.IsAlreadyInArray(People)) {
-            person.annotations.push(this.json[frame].annotations[annotation])
-            person.frames.push(this.findFrameWithName(frame))
-            People.push(person)
+            person.annotations.push(this.json[frame].annotations[annotation]);
+            console.log(person.annotations)
+            person.SetIsAClient();
+            
+            person.frames.push(this.findFrameWithName(frame));
+            People.push(person);
           }
           else {
             var rightperson = this.findPersonwithId(person.id,People);
-            People[rightperson].annotations.push(this.json[frame].annotations[annotation])
-            People[rightperson].frames.push(this.findFrameWithName(frame))
+            People[rightperson].annotations.push(this.json[frame].annotations[annotation]);
+            People[rightperson].frames.push(this.findFrameWithName(frame));
           }
-
+          
         }
       }
     }
@@ -107,6 +108,7 @@ class folderInfo {
 
 
 export class Person {
+
   id : number
   annotations: any = [];
   frames: Frame[] = [];
@@ -124,6 +126,14 @@ export class Person {
       }
     }
     return isIn;
+  }
+  SetIsAClient() {
+    var itIsNotAClient = false;
+    console.log(this.annotations[0])
+    if (this.annotations[0].y > 357) {
+      itIsNotAClient = true;
+    }
+    this.used = itIsNotAClient;
   }
 }
 

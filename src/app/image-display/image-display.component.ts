@@ -15,8 +15,8 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.personToDisplay);
     var reader = new FileReader();
+    console.log(this.personToDisplay);
     reader.readAsDataURL(this.personToDisplay.frames[1].file); // read file as data url
     reader.onload = (event) => { // called once readAsDataURL is completed
       this.url = event.target["result"];
