@@ -13,7 +13,7 @@ export class ImageDisplayComponent implements OnInit {
   selected = false;
   IndexToDisplay = 0;
 
-  constructor() {
+  constructor(private assets: AssetsService) {
   }
 
   ngOnInit() {
@@ -35,8 +35,39 @@ export class ImageDisplayComponent implements OnInit {
   }
   TogglePerson(): void {
     this.selected = !this.selected;
+    if (this.selected) {
+      this.addToSelectedPeople();
+    }
+    else {
+      this.removeFromSelectedPeople();
+    }
   }
 
+  addToSelectedPeople() {
+    if (this.personToDisplay.folder == 1) {
+      this.assets.Folder1.selectedPeople.push(this.personToDisplay);
+    }
+    if (this.personToDisplay.folder == 2) {
+      this.assets.Folder2.selectedPeople.push(this.personToDisplay);
+    }
+  }
+
+  removeFromSelectedPeople() {
+    if (this.personToDisplay.folder == 1) {
+      this.assets.Folder1.selectedPeople = this.arrayRemove(this.assets.Folder1.selectedPeople, this.personToDisplay);
+    }
+    if (this.personToDisplay.folder == 2) {
+      this.assets.Folder2.selectedPeople = this.arrayRemove(this.assets.Folder2.selectedPeople,this.personToDisplay);
+    }
+  }
+
+  arrayRemove(arr, value):any {
+
+  return arr.filter(function (ele) {
+    return ele != value;
+  });
+
+}
   mouseWheelUpFunc() {
     if (this.IndexToDisplay + 10 < this.personToDisplay.annotations.length) {
       this.IndexToDisplay+=10;      

@@ -20,16 +20,21 @@ export class MenuItem {
   providedIn: 'root'
 })
 export class AssetsService {
-  Folder1: folderInfo = new folderInfo();
-  Folder2: folderInfo = new folderInfo();
-  SamesID: SamePerson[] = []
+  Folder1: folderInfo = new folderInfo(1);
+  Folder2: folderInfo = new folderInfo(2);
+  SamesID: SamePerson[] = [];
 }
+
 
 class folderInfo {
   json: any;
   frames: Frame[] = [];
   People: Person[] = [];
-
+  selectedPeople: Person[] = [];
+  folder: number;
+  constructor(num: number) {
+    this.folder = num;
+  }
   private numAction: number = 0;
 
   setJson(json: any) {
@@ -52,12 +57,10 @@ class folderInfo {
     for (var frame in this.json) {
       for (var annotation in this.json[frame].annotations) {
         if (this.json[frame].annotations[annotation].length != 0) {
-          var person = new Person(this.json[frame].annotations[annotation].id);
+          var person = new Person(this.json[frame].annotations[annotation].id,this.folder);
           if (!person.IsAlreadyInArray(People)) {
             person.annotations.push(this.json[frame].annotations[annotation]);
-            console.log(person.annotations)
             person.SetIsAClient();
-            
             person.frames.push(this.findFrameWithName(frame));
             People.push(person);
           }
@@ -108,14 +111,15 @@ class folderInfo {
 
 
 export class Person {
-
   id : number
   annotations: any = [];
   frames: Frame[] = [];
   used: boolean;
+  folder: number;
 
-  constructor(id: number) {
+  constructor(id: number,num: number) {
     this.id = id;
+    this.folder = num;
   }
 
   IsAlreadyInArray(People: Person[]): boolean {
@@ -129,7 +133,6 @@ export class Person {
   }
   SetIsAClient() {
     var itIsNotAClient = false;
-    console.log(this.annotations[0])
     if (this.annotations[0].y > 357) {
       itIsNotAClient = true;
     }
