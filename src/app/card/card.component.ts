@@ -40,7 +40,7 @@ export class CardInfo {
       personInFolder = this.assets.Folder2.People;
     }
     for (var person of personInFolder) {
-      if (this.personToDisplay.length == 9) {
+      if (this.personToDisplay.length == 6) {
         return;
       }
       else {

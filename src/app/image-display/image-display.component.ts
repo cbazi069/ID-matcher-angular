@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AssetsService, Person } from '../assets.service';
+import { CardInfo } from '../card/card.component';
 
 @Component({
   selector: 'app-image-display',
@@ -7,7 +8,9 @@ import { AssetsService, Person } from '../assets.service';
   styleUrls: ['./image-display.component.css']
 })
 export class ImageDisplayComponent implements OnInit {
-  @Input() personToDisplay: Person;
+  @Input() infoCard: CardInfo;
+  @Input() numToDisplay: number;
+  personToDisplay: Person = this.infoCard.personToDisplay[this.numToDisplay];
   myStyle: any = {};
   url = '';
   selected = false;

@@ -15,6 +15,12 @@ export class ButtonsContainerComponent implements OnInit {
     } else {
       var objectSM = new SamePerson(this.assets.Folder1.selectedPeople, this.assets.Folder2.selectedPeople);
       this.assets.SamesID.push(objectSM);
+      for (var person1 of this.assets.Folder1.selectedPeople) {
+        person1.used = true;
+      }
+      for (var person2 of this.assets.Folder2.selectedPeople) {
+        person2.used = true;
+      }
     }
     console.log(this.assets.SamesID);
   }
