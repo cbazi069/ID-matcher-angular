@@ -13,6 +13,7 @@ import { ContenantImageComponent } from './contenant-image/contenant-image.compo
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 import { MousewheelDirective } from './mousewheel.directive';
+import { AlreadySeenCardComponent } from './already-seen-card/already-seen-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MousewheelDirective } from './mousewheel.directive';
     ButtonsContainerComponent,
     ContenantImageComponent,
     ImageDisplayComponent,
-    MousewheelDirective
+    MousewheelDirective,
+    AlreadySeenCardComponent
   ],
   imports: [
     BrowserModule,
