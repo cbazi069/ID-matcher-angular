@@ -8,9 +8,9 @@ import { CardInfo } from '../card/card.component';
   styleUrls: ['./image-display.component.css']
 })
 export class ImageDisplayComponent implements OnInit {
-  @Input() infoCard: CardInfo;
+  @Input() folder: number;
   @Input() numToDisplay: number;
-  personToDisplay: Person = this.infoCard.personToDisplay[this.numToDisplay];
+  personToDisplay: Person ;
   myStyle: any = {};
   url = '';
   selected = false;
@@ -20,7 +20,13 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.folder == 1) {
+      this.personToDisplay = this.assets.Folder1.peopleToDisplay.getArrayPersonToDisplay()[this.numToDisplay];
+    } else {
+      this.personToDisplay = this.assets.Folder2.peopleToDisplay.getArrayPersonToDisplay()[this.numToDisplay];
+    }
     this.printImage();
+    
   }
 
   CropingXYtoPixels() {

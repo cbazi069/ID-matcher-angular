@@ -23,15 +23,44 @@ export class AssetsService {
   Folder1: folderInfo = new folderInfo(1);
   Folder2: folderInfo = new folderInfo(2);
   SamesID: SamePerson[] = [];
+  
+}
+
+export class displayedPeople {
+  folderInfos: folderInfo;
+  constructor(folderInfos: folderInfo) {
+    this.folderInfos = folderInfos;
+  }
+  getArrayPersonToDisplay(): Person[]{
+    return this.DisplayNewPerson();
+  }
+  DisplayNewPerson(): Person[] {
+    var tabArray = [];
+    var personInFolder;
+    personInFolder = this.folderInfos.People;
+    for (var person of personInFolder) {
+      if (tabArray.length == 6) {
+        return;
+      }
+      else {
+        if (!person.used) {
+          tabArray.push(person);
+        }
+      }
+    }
+    return tabArray;
+  }
 }
 
 
-class folderInfo {
+export class folderInfo {
   json: any;
   frames: Frame[] = [];
   People: Person[] = [];
   selectedPeople: Person[] = [];
   folder: number;
+  peopleToDisplay: displayedPeople = new displayedPeople(this);
+
   constructor(num: number) {
     this.folder = num;
   }

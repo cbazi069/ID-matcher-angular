@@ -8,8 +8,8 @@ import { Menu, AssetsService } from '../assets.service';
   styleUrls: ['./contenant-image.component.css']
 })
 export class ContenantImageComponent implements OnInit {
-  info1: CardInfo = new CardInfo("Images on the first JSON file", "Choose images were you can see that people are the same and go to the right cell", 1, this.assets);
-  info2: CardInfo = new CardInfo("Images on the second JSON file", "Choose images were you can see that people are the same and choose the action with the button bellow.", 2, this.assets);
+  info1: CardInfo = new CardInfo("Images on the first JSON file", "Choose images were you can see that people are the same and go to the right cell");
+  info2: CardInfo = new CardInfo("Images on the second JSON file", "Choose images were you can see that people are the same and choose the action with the button bellow.");
  
 
   constructor(private menu: Menu, private assets: AssetsService) { }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AssetsService, Person } from '../assets.service';
+import { AssetsService, folderInfo } from '../assets.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 
@@ -10,6 +10,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 })
 export class CardComponent implements OnInit {
   @Input() infosfromthecard: CardInfo;
+  @Input() folder_num: number;
 
   constructor(private infos: AssetsService) { }
   ngOnInit() {
@@ -19,35 +20,11 @@ export class CardComponent implements OnInit {
 export class CardInfo {
   title: string;
   legend: string;
-  folderindication: number;
-  personToDisplay: Person[] = [];
-  private assets: AssetsService
 
-  constructor(title: string, legend: string, num: number, assets: AssetsService) {
+  constructor(title: string, legend: string) {
     this.title = title;
     this.legend = legend;
-    this.folderindication = num;
-    this.assets = assets;
-    this.DisplayNewPerson()
-  }
-
-  DisplayNewPerson(): void {
-    var personInFolder;
-    if (this.folderindication == 1) {
-      personInFolder = this.assets.Folder1.People;
-    }
-    else {
-      personInFolder = this.assets.Folder2.People;
-    }
-    for (var person of personInFolder) {
-      if (this.personToDisplay.length == 6) {
-        return;
-      }
-      else {
-        if (!person.used) {
-          this.personToDisplay.push(person);
-        }
-      }
-    }
+    
   }
 }
+
