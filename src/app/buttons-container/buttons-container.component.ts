@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AssetsService, Person, SamePerson } from '../assets.service';
 
 @Component({
@@ -8,8 +8,13 @@ import { AssetsService, Person, SamePerson } from '../assets.service';
 })
 export class ButtonsContainerComponent implements OnInit {
 
+  @Output() BtnMergeClicked : EventEmitter<any> = new EventEmitter();
+
   constructor(private assets: AssetsService) { }
+
   mergeFunction() {
+
+
     if (this.assets.Folder1.selectedPeople.length == 0 || this.assets.Folder2.selectedPeople.length == 0) {
       alert("Please select some people!")
     } else {
@@ -21,6 +26,7 @@ export class ButtonsContainerComponent implements OnInit {
       for (var person2 of this.assets.Folder2.selectedPeople) {
         person2.used = true;
       }
+      this.BtnMergeClicked.emit(null);
     }
     console.log(this.assets.SamesID);
   }

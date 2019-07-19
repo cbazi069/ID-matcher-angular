@@ -40,7 +40,7 @@ export class displayedPeople {
     personInFolder = this.folderInfos.People;
     for (var person of personInFolder) {
       if (tabArray.length == 6) {
-        return;
+        return tabArray;
       }
       else {
         if (!person.used) {
@@ -88,19 +88,20 @@ export class folderInfo {
         if (this.json[frame].annotations[annotation].length != 0) {
           var person = new Person(this.json[frame].annotations[annotation].id,this.folder);
           if (!person.IsAlreadyInArray(People)) {
-            person.annotations.push(this.json[frame].annotations[annotation]);
-            person.SetIsAClient();
+            person.AddAnnotation(this.json[frame].annotations[annotation]);
             person.frames.push(this.findFrameWithName(frame));
             People.push(person);
           }
           else {
             var rightperson = this.findPersonwithId(person.id,People);
-            People[rightperson].annotations.push(this.json[frame].annotations[annotation]);
+            People[rightperson].AddAnnotation(this.json[frame].annotations[annotation]);
             People[rightperson].frames.push(this.findFrameWithName(frame));
-          }
-          
+          }          
         }
       }
+    }
+    for (var person1 of People) {
+      person1.checkIfReal();
     }
     return People
 
@@ -140,17 +141,26 @@ export class folderInfo {
 
 
 export class Person {
-  id : number
+  id: number
   annotations: any = [];
   frames: Frame[] = [];
   used: boolean;
   folder: number;
+  MaxDim: number = 0;
+  biggerFrameToDisplay: number = 0;
 
-  constructor(id: number,num: number) {
+  constructor(id: number, num: number) {
     this.id = id;
     this.folder = num;
   }
 
+  AddAnnotation(anno: any) {
+    if (anno.width * anno.height > this.MaxDim) {
+      this.MaxDim = anno.width * anno.height;
+      this.biggerFrameToDisplay = this.annotations.length;
+    }
+    this.annotations.push(anno);
+  }
   IsAlreadyInArray(People: Person[]): boolean {
     var isIn = false;
     for (let i of People) {
@@ -160,6 +170,7 @@ export class Person {
     }
     return isIn;
   }
+
   SetIsAClient() {
     var itIsNotAClient = false;
     if (this.annotations[0].y > 357) {
@@ -167,8 +178,16 @@ export class Person {
     }
     this.used = itIsNotAClient;
   }
-}
 
+
+  checkIfReal() {
+    this.SetIsAClient();
+    if (this.MaxDim < 16000) {
+      this.used = true;
+    }
+
+  }
+}
 
 export class Frame {
   name: string;

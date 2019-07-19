@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-6">
-    <app-card [infosfromthecard]="info1" [folder_num]="1"></app-card>
+    <app-card [infosfromthecard]="info1" [folder_num]="1" #card1></app-card>
   </div>
   <div class="col-md-6">
-    <app-card [infosfromthecard]="info2" [folder_num]="2"></app-card>
+    <app-card [infosfromthecard]="info2" [folder_num]="2" #card2></app-card>
   </div>
 </div>
 <div class="row">
   <div class="col-md-6 ml-auto mr-auto">
-    <app-buttons-container></app-buttons-container>
+    <app-buttons-container (BtnMergeClicked)="RefreshImageDisplay($event)" ></app-buttons-container>
   </div>
 </div>

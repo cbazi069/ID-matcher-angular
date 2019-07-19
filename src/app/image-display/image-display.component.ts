@@ -14,20 +14,28 @@ export class ImageDisplayComponent implements OnInit {
   myStyle: any = {};
   url = '';
   selected = false;
-  IndexToDisplay = 0;
+  IndexToDisplay:number = 0;
 
   constructor(private assets: AssetsService) {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
+    this.selected = false;
     if (this.folder == 1) {
       this.personToDisplay = this.assets.Folder1.peopleToDisplay.getArrayPersonToDisplay()[this.numToDisplay];
-    } else {
+    }
+    else {
       this.personToDisplay = this.assets.Folder2.peopleToDisplay.getArrayPersonToDisplay()[this.numToDisplay];
     }
+    this.IndexToDisplay = this.personToDisplay.biggerFrameToDisplay;
     this.printImage();
-    
+
   }
+
 
   CropingXYtoPixels() {
     var annotation = this.personToDisplay.annotations[this.IndexToDisplay];
