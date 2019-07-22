@@ -27,7 +27,7 @@ import { AlreadySeenCardComponent } from './already-seen-card/already-seen-card.
     ContenantImageComponent,
     ImageDisplayComponent,
     MousewheelDirective,
-    AlreadySeenCardComponent
+    AlreadySeenCardComponent,
   ],
   imports: [
     BrowserModule,

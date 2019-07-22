@@ -14,7 +14,6 @@ export class ButtonsContainerComponent implements OnInit {
 
   mergeFunction() {
 
-
     if (this.assets.Folder1.selectedPeople.length == 0 || this.assets.Folder2.selectedPeople.length == 0) {
       alert("Please select some people!")
     } else {

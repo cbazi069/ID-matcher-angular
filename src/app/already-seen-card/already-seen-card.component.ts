@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssetsService } from '../assets.service';
 
 @Component({
   selector: 'app-already-seen-card',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlreadySeenCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private assets: AssetsService) {}
 
   ngOnInit() {
   }

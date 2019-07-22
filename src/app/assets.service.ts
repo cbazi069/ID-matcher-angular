@@ -27,7 +27,7 @@ export class AssetsService {
 }
 
 export class displayedPeople {
-  folderInfos: folderInfo;
+
   constructor(folderInfos: folderInfo) {
     this.folderInfos = folderInfos;
   }

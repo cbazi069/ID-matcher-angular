@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AssetsService, Person } from '../assets.service';
 import { CardInfo } from '../card/card.component';
 
@@ -8,9 +8,11 @@ import { CardInfo } from '../card/card.component';
   styleUrls: ['./image-display.component.css']
 })
 export class ImageDisplayComponent implements OnInit {
-  @Input() folder: number;
-  @Input() numToDisplay: number;
-  personToDisplay: Person ;
+  @Input() personToDisplay: Person;
+
+  @Output() AddToSelection: EventEmitter<any> = new EventEmitter();
+  @Output() RemoveFromSelection: EventEmitter<any> = new EventEmitter();
+
   myStyle: any = {};
   url = '';
   selected = false;
@@ -24,16 +26,10 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   refresh() {
+    console.log('r')
     this.selected = false;
-    if (this.folder == 1) {
-      this.personToDisplay = this.assets.Folder1.peopleToDisplay.getArrayPersonToDisplay()[this.numToDisplay];
-    }
-    else {
-      this.personToDisplay = this.assets.Folder2.peopleToDisplay.getArrayPersonToDisplay()[this.numToDisplay];
-    }
     this.IndexToDisplay = this.personToDisplay.biggerFrameToDisplay;
     this.printImage();
-
   }
 
 
@@ -51,6 +47,7 @@ export class ImageDisplayComponent implements OnInit {
     }
   }
   TogglePerson(): void {
+    console.log(this.personToDisplay)
     this.selected = !this.selected;
     if (this.selected) {
       this.addToSelectedPeople();
@@ -61,30 +58,14 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   addToSelectedPeople() {
-    if (this.personToDisplay.folder == 1) {
-      this.assets.Folder1.selectedPeople.push(this.personToDisplay);
-    }
-    if (this.personToDisplay.folder == 2) {
-      this.assets.Folder2.selectedPeople.push(this.personToDisplay);
-    }
+    this.AddToSelection.emit(this.personToDisplay);
   }
 
   removeFromSelectedPeople() {
-    if (this.personToDisplay.folder == 1) {
-      this.assets.Folder1.selectedPeople = this.arrayRemove(this.assets.Folder1.selectedPeople, this.personToDisplay);
-    }
-    if (this.personToDisplay.folder == 2) {
-      this.assets.Folder2.selectedPeople = this.arrayRemove(this.assets.Folder2.selectedPeople,this.personToDisplay);
-    }
+    this.RemoveFromSelection.emit(this.personToDisplay);
   }
 
-  arrayRemove(arr, value):any {
 
-  return arr.filter(function (ele) {
-    return ele != value;
-  });
-
-}
   mouseWheelUpFunc() {
     if (this.IndexToDisplay + 10 < this.personToDisplay.annotations.length) {
       this.IndexToDisplay+=10;      
