@@ -8,7 +8,8 @@ import { CardInfo } from '../card/card.component';
   styleUrls: ['./image-display.component.css']
 })
 export class ImageDisplayComponent implements OnInit {
-  @Input() personToDisplay: Person;
+  @Input() firstImage: Person;
+  personToDisplay: Person;
 
   @Output() AddToSelection: EventEmitter<any> = new EventEmitter();
   @Output() RemoveFromSelection: EventEmitter<any> = new EventEmitter();
@@ -22,11 +23,13 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refresh();
+    this.refresh(this.firstImage);
   }
 
-  refresh() {
+  refresh(person: Person) {
     console.log('r')
+    console.log(person);
+    this.personToDisplay = person;
     this.selected = false;
     this.IndexToDisplay = this.personToDisplay.biggerFrameToDisplay;
     this.printImage();

@@ -18,20 +18,21 @@ export class CardComponent implements OnInit {
   @ViewChild('im4', { static: false }) im4: ImageDisplayComponent;
   @ViewChild('im5', { static: false }) im5: ImageDisplayComponent;
   @ViewChild('im6', { static: false }) im6: ImageDisplayComponent;
-  foldernum: number
 
-  constructor(private infos: AssetsService) { }
-  ngOnInit() {
+  constructor(private infos: AssetsService) {
   }
-
+  ngOnInit() {
+    this.folder_num.peopleToDisplay.getArrayPersonToDisplay()
+  }
   Refresh() {
-    console.log('refresh All')
-    this.im1.refresh();
-    this.im2.refresh();
-    this.im3.refresh();
-    this.im4.refresh();
-    this.im5.refresh();
-    this.im6.refresh();
+    console.log("R for " + this.folder_num.folder.toString());
+    var people = this.folder_num.peopleToDisplay.getArrayPersonToDisplay()
+    this.im1.refresh(people[0]);
+    this.im2.refresh(people[1]);
+    this.im3.refresh(people[2]);
+    this.im4.refresh(people[3]);
+    this.im5.refresh(people[4]);
+    this.im6.refresh(people[5]);
 
   }
 

@@ -2,17 +2,17 @@
   <div class="card-header card-header-warning">
     <div class="row">
       <div class="col-12 d-flex justify-content-around">
-        <app-image-display [personToDisplay]="folder_num.peopleToDisplay.getArrayPersonToDisplay()[0]" #im1 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)" ></app-image-display>
-        <app-image-display [personToDisplay]="folder_num.peopleToDisplay.getArrayPersonToDisplay()[1]" #im2 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
-        <app-image-display [personToDisplay]="folder_num.peopleToDisplay.getArrayPersonToDisplay()[2]" #im3 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
+        <app-image-display [firstImage] = folder_num.peopleToDisplay.getArrayPersonToDisplay()[0] #im1 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)" ></app-image-display>
+        <app-image-display [firstImage] = folder_num.peopleToDisplay.getArrayPersonToDisplay()[1] #im2 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
+        <app-image-display [firstImage] = folder_num.peopleToDisplay.getArrayPersonToDisplay()[2] #im3 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
       </div>
     </div>
     <br />
     <div class="row">
       <div class="col-12 d-flex justify-content-around">
-        <app-image-display [personToDisplay]="folder_num.peopleToDisplay.getArrayPersonToDisplay()[3]" #im4 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
-        <app-image-display [personToDisplay]="folder_num.peopleToDisplay.getArrayPersonToDisplay()[4]" #im5 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
-        <app-image-display [personToDisplay]="folder_num.peopleToDisplay.getArrayPersonToDisplay()[5]" #im6 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
+        <app-image-display [firstImage] = folder_num.peopleToDisplay.getArrayPersonToDisplay()[3] #im4 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
+        <app-image-display [firstImage] = folder_num.peopleToDisplay.getArrayPersonToDisplay()[4] #im5 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
+        <app-image-display [firstImage] = folder_num.peopleToDisplay.getArrayPersonToDisplay()[5] #im6 (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
       </div>
     </div>
     <br />

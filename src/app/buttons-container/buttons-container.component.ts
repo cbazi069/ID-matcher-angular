@@ -13,7 +13,6 @@ export class ButtonsContainerComponent implements OnInit {
   constructor(private assets: AssetsService) { }
 
   mergeFunction() {
-
     if (this.assets.Folder1.selectedPeople.length == 0 || this.assets.Folder2.selectedPeople.length == 0) {
       alert("Please select some people!")
     } else {
@@ -25,6 +24,10 @@ export class ButtonsContainerComponent implements OnInit {
       for (var person2 of this.assets.Folder2.selectedPeople) {
         person2.used = true;
       }
+
+      this.assets.Folder1.selectedPeople = [];
+      this.assets.Folder2.selectedPeople = [];
+
       this.BtnMergeClicked.emit(null);
     }
     console.log(this.assets.SamesID);
