@@ -25,7 +25,6 @@ export class CardComponent implements OnInit {
     this.folder_num.peopleToDisplay.getArrayPersonToDisplay()
   }
   Refresh() {
-    console.log("R for " + this.folder_num.folder.toString());
     var people = this.folder_num.peopleToDisplay.getArrayPersonToDisplay()
     this.im1.refresh(people[0]);
     this.im2.refresh(people[1]);
@@ -33,15 +32,14 @@ export class CardComponent implements OnInit {
     this.im4.refresh(people[3]);
     this.im5.refresh(people[4]);
     this.im6.refresh(people[5]);
-
   }
 
   AddToSelection(event) {
     if (this.folder_num.folder == 1) {
-      this.infos.Folder1.selectedPeople.push(event);
+      this.infos.SelectedPeople.Folder1.push(event);
     }
     else if (this.folder_num.folder == 2) {
-      this.infos.Folder2.selectedPeople.push(event);
+      this.infos.SelectedPeople.Folder2.push(event);
     }
     else {
       console.log("nothing happend")
@@ -51,10 +49,10 @@ export class CardComponent implements OnInit {
 
   RemoveFromSelection(event) {
     if (this.folder_num.folder == 1) {      
-      this.infos.Folder1.selectedPeople = this.arrayRemove(this.infos.Folder1.selectedPeople, event);
+      this.infos.SelectedPeople.Folder1 = this.arrayRemove(this.infos.SelectedPeople.Folder1, event);
     }
     else if (this.folder_num.folder == 2) {
-      this.infos.Folder2.selectedPeople = this.arrayRemove(this.infos.Folder2.selectedPeople, event);
+      this.infos.SelectedPeople.Folder2 = this.arrayRemove(this.infos.SelectedPeople.Folder2, event);
     }
   }
 

@@ -22,6 +22,7 @@ export class MenuItem {
 export class AssetsService {
   Folder1: folderInfo = new folderInfo(1);
   Folder2: folderInfo = new folderInfo(2);
+  SelectedPeople: SelectedPeople = new SelectedPeople();
   SamesID: SamePerson[] = [];
   
 }
@@ -51,13 +52,10 @@ export class displayedPeople {
     return tabArray;
   }
 }
-
-
 export class folderInfo {
   json: any;
   frames: Frame[] = [];
   People: Person[] = [];
-  selectedPeople: Person[] = [];
   folder: number;
   peopleToDisplay: displayedPeople = new displayedPeople(this);
 
@@ -137,9 +135,6 @@ export class folderInfo {
     }
   }
 }
-
-
-
 export class Person {
   id: number
   annotations: any = [];
@@ -188,7 +183,6 @@ export class Person {
 
   }
 }
-
 export class Frame {
   name: string;
   index: number;
@@ -200,12 +194,52 @@ export class Frame {
   }
 }
 export class SamePerson {
-  PeopleFromFolder1: Person[];
-  PeopleFromFolder2: Person[];
-  constructor(PersFold1: Person[], PersFold2: Person[]) {
-    this.PeopleFromFolder1 = PersFold1;
-    this.PeopleFromFolder2 = PersFold2;
+  People: Person[] = [];
+  constructor(selectedPeople: SelectedPeople, as: AssetsService) {
+    for (var i of selectedPeople.Folder1) {
+      this.People.push(i);
+    }
+    for (var i of selectedPeople.Folder2) {
+      this.People.push(i);
+    }
+    for (var i of selectedPeople.BottomBar) {
+      var ArrayOfExistantPerson;
+      for (var y of as.SamesID) {
+        if (i == y.Get()[0]) {
+          ArrayOfExistantPerson = y.Get();
+          as.SamesID = this.arrayRemove(as.SamesID, y);
+        }
+      }
+      for (var t of ArrayOfExistantPerson) {
+        this.People.push(t);
+      }
+    }
   }
+
+  private arrayRemove(arr, value): any {
+
+    return arr.filter(function (ele) {
+      return ele != value;
+    });
+
+  }
+  Get(): Person[] {
+    return this.People;
+  }
+
+}
+export class SelectedPeople {
+  constructor() { }
+  Folder1: Person[] = [];
+  Folder2: Person[] = [];
+  BottomBar: Person[] = [];
+
+  Reset() {
+    this.Folder1 = [];
+    this.Folder2 = [];
+    this.BottomBar = [];
+  }
+
 
 }
 

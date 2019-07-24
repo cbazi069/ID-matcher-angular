@@ -27,7 +27,6 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   refresh(person: Person) {
-    console.log('r')
     console.log(person);
     this.personToDisplay = person;
     this.selected = false;
@@ -69,17 +68,21 @@ export class ImageDisplayComponent implements OnInit {
   }
 
 
-  mouseWheelUpFunc() {
+  mouseWheelUpFunc(e) {
     if (this.IndexToDisplay + 10 < this.personToDisplay.annotations.length) {
       this.IndexToDisplay+=10;      
       this.printImage();
     }
+    e.preventDefault();
+    return;
   }
-  mouseWheelDownFunc() {
+  mouseWheelDownFunc(e) {
     if (this.IndexToDisplay - 10 >= 0) {
       this.IndexToDisplay-=10;
       this.printImage();
     }
+    e.preventDefault();
+    return;
   }
   printImage() {
     var reader = new FileReader();

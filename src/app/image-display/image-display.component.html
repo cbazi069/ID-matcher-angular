@@ -1,3 +1,1 @@
-<div mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" class="width : 90px;height:120px;">
-  <img [ngStyle]="myStyle" [src]="url" style="cursor:pointer" (click)="TogglePerson()" [class.SelectedPerson]="selected">
-</div>
+<img mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" [ngStyle]="myStyle" [src]="url" style="cursor:pointer" (click)="TogglePerson()" [class.SelectedPerson]="selected">

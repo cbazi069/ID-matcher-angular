@@ -4,8 +4,8 @@
     <p>Here are the people you have already seen. You can merge them with the boxes above in case of need.</p>
   </div>
   <div class="card-body">
-      <div *ngFor="let person of assets.SamesID">
-        <app-image-display [firstImage]="Person.PeopleFromFolder1[0]"></app-image-display>
-      </div>
+    <div  class="align-self-start">
+      <app-image-display *ngFor="let person of assets.SamesID" [firstImage]="person.Get()[0]" (AddToSelection)="AddToSelection($event)" (RemoveFromSelection)="RemoveFromSelection($event)"></app-image-display>
+    </div>
   </div>
 </div>

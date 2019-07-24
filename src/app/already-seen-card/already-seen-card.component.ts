@@ -13,4 +13,20 @@ export class AlreadySeenCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  AddToSelection(event) {
+    this.assets.SelectedPeople.BottomBar.push(event);
+  }
+
+  RemoveFromSelection(event) {
+    this.assets.SelectedPeople.BottomBar = this.arrayRemove(this.assets.SelectedPeople.BottomBar, event);
+  }
+
+  arrayRemove(arr, value): any {
+
+    return arr.filter(function (ele) {
+      return ele != value;
+    });
+
+  }
+
 }

@@ -13,20 +13,20 @@ export class ButtonsContainerComponent implements OnInit {
   constructor(private assets: AssetsService) { }
 
   mergeFunction() {
-    if (this.assets.Folder1.selectedPeople.length == 0 || this.assets.Folder2.selectedPeople.length == 0) {
-      alert("Please select some people!")
-    } else {
-      var objectSM = new SamePerson(this.assets.Folder1.selectedPeople, this.assets.Folder2.selectedPeople);
+    if (this.assets.SelectedPeople.Folder1.length + this.assets.SelectedPeople.Folder2.length + this.assets.SelectedPeople.BottomBar.length < 2) {
+      alert("Please select at least 2 people!")
+    }
+    else {
+      var objectSM = new SamePerson(this.assets.SelectedPeople, this.assets);
       this.assets.SamesID.push(objectSM);
-      for (var person1 of this.assets.Folder1.selectedPeople) {
+      for (var person1 of this.assets.SelectedPeople.Folder1) {
         person1.used = true;
       }
-      for (var person2 of this.assets.Folder2.selectedPeople) {
+      for (var person2 of this.assets.SelectedPeople.Folder2) {
         person2.used = true;
       }
 
-      this.assets.Folder1.selectedPeople = [];
-      this.assets.Folder2.selectedPeople = [];
+      this.assets.SelectedPeople.Reset();
 
       this.BtnMergeClicked.emit(null);
     }
@@ -88,14 +88,14 @@ export class ButtonsContainerComponent implements OnInit {
     var oldID_1 = 0;
     var oldID_2 = 0;
     for (let samePerson of this.assets.SamesID) {
-      for (let peopleFrom1 of samePerson.PeopleFromFolder1) {
-        oldID_1 = peopleFrom1.id;
-        this.setJsonWithNewIds(peopleFrom1, oldID_1, 1, update_id);
-      }
-      for (let peopleFrom2 of samePerson.PeopleFromFolder2) {
-        oldID_2 = peopleFrom2.id;
-        this.setJsonWithNewIds(peopleFrom2, oldID_2, 2, update_id);
-      }
+      //for (let peopleFrom1 of samePerson.PeopleFromFolder1) {
+      //  oldID_1 = peopleFrom1.id;
+      //  this.setJsonWithNewIds(peopleFrom1, oldID_1, 1, update_id);
+      //}
+      //for (let peopleFrom2 of samePerson.PeopleFromFolder2) {
+      //  oldID_2 = peopleFrom2.id;
+      //  this.setJsonWithNewIds(peopleFrom2, oldID_2, 2, update_id);
+      //}
       update_id++;
     }
   }
