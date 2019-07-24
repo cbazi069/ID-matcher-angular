@@ -1,42 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="wrapper ">
-  <app-sidebar></app-sidebar>
-  <div class="main-panel">
-    <!-- Navbar -->
-    <app-navbar></app-navbar>
-    <!-- End Navbar -->
-    <div class="content">
-      <div class="container-fluid">
-        <div *ngIf="menu.selectedItem.name == 'Imports'">
+  <div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <app-navbar></app-navbar>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div *ngIf="menu.selectedItem.name == 'Imports'">
             <app-imports></app-imports>
+          </div>
+          <div *ngIf="menu.selectedItem.name == 'ID matching'">
+            <app-contenant-image></app-contenant-image>
+          </div>
+          <div *ngIf="menu.selectedItem.name == 'Download'">
+            <app-download></app-download>
+          </div>
         </div>
-        <div *ngIf="menu.selectedItem.name == 'ID matching'">
-          <app-contenant-image></app-contenant-image>
-        </div>
-    </div>
-    <!-- your footer here  -->
-    <footer class="footer">
-      <div class="container-fluid">
-        <nav class="float-left">
-          <ul>
-            <li>
-              <a href="https://www.creative-tim.com">
-                Creative Tim
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright float-right">
-          &copy;
-          <script>
-              document.write(new Date().getFullYear())
-          </script>, made with <i class="material-icons">favorite</i> by
-          <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-        </div>
+        <!-- your footer here  -->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="copyright float-right">
+              Made with the help of
+              &copy;
+              <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </div>
+          </div>
+        </footer>
       </div>
-    </footer>
+    </div>
   </div>
-</div>
 
 
 <router-outlet></router-outlet>

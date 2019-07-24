@@ -14,6 +14,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 import { MousewheelDirective } from './mousewheel.directive';
 import { AlreadySeenCardComponent } from './already-seen-card/already-seen-card.component';
+import { DownloadComponent } from './download/download.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AlreadySeenCardComponent } from './already-seen-card/already-seen-card.
     ImageDisplayComponent,
     MousewheelDirective,
     AlreadySeenCardComponent,
+    DownloadComponent,
   ],
   imports: [
     BrowserModule,

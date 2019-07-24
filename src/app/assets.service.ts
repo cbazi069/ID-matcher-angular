@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class Menu {
   items: MenuItem[] =
     [{ name: "Imports", ico: "vertical_align_top", activate: true },
-    { name: "ID matching", ico: "view_module", activate: false }];
+      { name: "ID matching", ico: "view_module", activate: false },
+      { name: "Download", ico: "view_module", activate: false }];
   selectedItem: MenuItem = this.items[0];
 
 }
