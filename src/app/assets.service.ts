@@ -7,7 +7,7 @@ export class Menu {
   items: MenuItem[] =
     [{ name: "Imports", ico: "vertical_align_top", activate: true },
       { name: "ID matching", ico: "view_module", activate: false },
-      { name: "Download", ico: "view_module", activate: false }];
+      { name: "Download", ico: "vertical_align_bottom", activate: false }];
   selectedItem: MenuItem = this.items[0];
 
 }

@@ -15,12 +15,13 @@ export class DownloadComponent implements OnInit {
   }
 
   getJsonFolder(numFolder: number) {
-    this.setJson(this.setNewIdOfperson);
-    if (numFolder == 1) {
+    this.setJson(this.setNewIdOfperson());
+    if (numFolder == 1) {      
       var sJson = JSON.stringify(this.assets.Folder1.json);
+      console.log(sJson);
       var element = document.createElement('a');
       element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
-      element.setAttribute('download', "primer-server-task.json");
+      element.setAttribute('download', "IDDiffrentJSON1.json");
       element.style.display = 'none';
       document.body.appendChild(element);
       element.click(); // simulate click
@@ -28,9 +29,10 @@ export class DownloadComponent implements OnInit {
 
     } else {
       var sJson = JSON.stringify(this.assets.Folder2.json);
+      console.log(sJson);
       var element = document.createElement('a');
       element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
-      element.setAttribute('download', "primer-server-task.json");
+      element.setAttribute('download', "IDDiffrentJSON2.json");
       element.style.display = 'none';
       document.body.appendChild(element);
       element.click(); // simulate click
@@ -38,14 +40,15 @@ export class DownloadComponent implements OnInit {
     }
   }
 
-  setJson(correspondingID: object) {
-    for (var i in correspondingID) {
+  setJson(correspondingID: any[]) {
+    for (let i of correspondingID) {
       if (i.folder == 1) {
         var json = this.assets.Folder1.json;
       } else {
         var json = this.assets.Folder2.json;
       }
-      for (var frame in i.frames) {
+      for (var j in i.frames) {
+        var frame = i.frames[j].name;
         for (var anno in json[frame].annotations) {
           if (json[frame].annotations[anno].id == i.oldId) {
             json[frame].annotations[anno].id = i.newId;
@@ -57,7 +60,7 @@ export class DownloadComponent implements OnInit {
 
   setNewIdOfperson(): any {
     var update_id = this.MaxId(this.assets.Folder1.json, this.assets.Folder2.json);
-    var correspondingID = {};
+    var correspondingID = [];
     var i = 0;
     console.log(this.assets.SamesID)
     for (let samePeople of this.assets.SamesID) { //pour chaque tableau de personnes qui sont les mêmes
@@ -91,6 +94,7 @@ export class DownloadComponent implements OnInit {
         }
       }
     }
+    
     return maxId + 10;
   }
 }

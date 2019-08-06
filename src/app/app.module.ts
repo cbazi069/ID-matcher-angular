@@ -10,7 +10,6 @@ import { CardImportComponent } from './card-import/card-import.component';
 import { CardComponent } from './card/card.component';
 import { ButtonsContainerComponent } from './buttons-container/buttons-container.component';
 import { ContenantImageComponent } from './contenant-image/contenant-image.component';
-import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 import { MousewheelDirective } from './mousewheel.directive';
 import { AlreadySeenCardComponent } from './already-seen-card/already-seen-card.component';
@@ -33,8 +32,7 @@ import { DownloadComponent } from './download/download.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ImageCropperModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
