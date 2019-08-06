@@ -1,1 +1,1 @@
-<img mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" [ngStyle]="myStyle" [src]="url" style="cursor:pointer" (click)="TogglePerson()" [class.SelectedPerson]="selected">
+<img *ngIf="personToDisplay" mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" [ngStyle]="myStyle" [src]="url" style="cursor:pointer" (click)="TogglePerson()" [class.SelectedPerson]="selected">

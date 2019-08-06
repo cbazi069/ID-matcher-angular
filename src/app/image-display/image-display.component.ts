@@ -27,10 +27,20 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   refresh(person: Person) {
-    this.personToDisplay = person;
-    this.selected = false;
-    this.IndexToDisplay = this.personToDisplay.biggerFrameToDisplay;
-    this.printImage();
+    if (person) {
+      this.personToDisplay = person;
+      this.selected = false;
+      if (this.personToDisplay.biggerFrameToDisplay) {
+        this.IndexToDisplay = this.personToDisplay.biggerFrameToDisplay;
+      }
+      else {
+        this.IndexToDisplay = 0;
+      }
+      this.printImage();
+    }
+    else {
+      this.personToDisplay = null;
+    }
   }
 
 
