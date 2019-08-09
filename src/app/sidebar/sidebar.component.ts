@@ -13,16 +13,16 @@ export class SidebarComponent implements OnInit {
   }
 
   onSelect(item_selected: MenuItem): void {
-    /*if (this.asset.Folder1.People.length != 0 && this.asset.Folder2.People.length != 0) {*/
+    if (this.asset.Folder1.People.length != 0 && this.asset.Folder2.People.length != 0) {
       for (let item of this.menu.items) {
         item.activate = false;
       }
       item_selected.activate = true;
       this.menu.selectedItem = item_selected;
-    //}
-    /*else {
+    }
+    else {
       alert("No files imported");
-    }*/
+    }
   }
 
   ngOnInit() {

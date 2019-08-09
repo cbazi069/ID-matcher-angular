@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AssetsService, SamePerson } from '../assets.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-buttons-container',
@@ -10,7 +11,7 @@ export class ButtonsContainerComponent implements OnInit {
 
   @Output() BtnMergeClicked: EventEmitter<any> = new EventEmitter();
 
-  constructor(private assets: AssetsService) { }
+  constructor(private assets: AssetsService, private sanitizer: DomSanitizer) { }
 
   mergeFunction() {
     if (this.assets.SelectedPeople.Folder1.length + this.assets.SelectedPeople.Folder2.length + this.assets.SelectedPeople.BottomBar.length < 2) {
@@ -48,10 +49,6 @@ export class ButtonsContainerComponent implements OnInit {
       this.BtnMergeClicked.emit(null);
     }
   }
-
-
-
-
 
   ngOnInit() {
   }

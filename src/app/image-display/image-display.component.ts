@@ -63,7 +63,6 @@ export class ImageDisplayComponent implements OnInit {
     }
   }
   TogglePerson(): void {
-    console.log(this.personToDisplay)
     this.selected = !this.selected;
     if (this.selected) {
       this.addToSelectedPeople();

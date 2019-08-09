@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AssetsService, SamePerson } from '../assets.service';
-import { numberItem } from '../card-import/card-import.component';
+import { AssetsService } from '../assets.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-download',
@@ -9,36 +9,13 @@ import { numberItem } from '../card-import/card-import.component';
 })
 export class DownloadComponent implements OnInit {
 
-  constructor(private assets: AssetsService) { }
+  constructor(private assets: AssetsService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-  }
-
-  getJsonFolder(numFolder: number) {
     this.setJson(this.setNewIdOfperson());
-    if (numFolder == 1) {      
-      var sJson = JSON.stringify(this.assets.Folder1.json);
-      console.log(sJson);
-      var element = document.createElement('a');
-      element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
-      element.setAttribute('download', "IDDiffrentJSON1.json");
-      element.style.display = 'none';
-      document.body.appendChild(element);
-      element.click(); // simulate click
-      document.body.removeChild(element);
-
-    } else {
-      var sJson = JSON.stringify(this.assets.Folder2.json);
-      console.log(sJson);
-      var element = document.createElement('a');
-      element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
-      element.setAttribute('download', "IDDiffrentJSON2.json");
-      element.style.display = 'none';
-      document.body.appendChild(element);
-      element.click(); // simulate click
-      document.body.removeChild(element);
-    }
   }
+  downloadJsonHref1: SafeUrl;
+  downloadJsonHref2: SafeUrl;
 
   setJson(correspondingID: any[]) {
     for (let i of correspondingID) {
@@ -62,7 +39,6 @@ export class DownloadComponent implements OnInit {
     var update_id = this.MaxId(this.assets.Folder1.json, this.assets.Folder2.json);
     var correspondingID = [];
     var i = 0;
-    console.log(this.assets.SamesID)
     for (let samePeople of this.assets.SamesID) { //pour chaque tableau de personnes qui sont les mêmes
       for (let person of samePeople.People) { //pour chaque personne de ce tableau
         correspondingID[i] = { "frames": person.frames ,"oldId":person.id ,"newId": update_id , "folder":person.folder }; //l'id est mis au max+10 des ids déjà existant
@@ -70,7 +46,6 @@ export class DownloadComponent implements OnInit {
       }
       update_id++; //id prochain +1
     }
-    console.log(correspondingID);
     return correspondingID;
   }
 
@@ -93,8 +68,52 @@ export class DownloadComponent implements OnInit {
           }
         }
       }
-    }
-    
+    }    
     return maxId + 10;
   }
+
+
+  generateDownloadJsonUri1() {
+    var csvData = JSON.stringify(this.assets.Folder1.json);
+    var blob = new Blob([csvData], {
+      type: "application/csv;charset=utf-8;"
+    });
+
+    if (window.navigator.msSaveBlob) {
+      // FOR IE BROWSER
+      navigator.msSaveBlob(blob, "AnnotationFolder1_ReIdentified.json");
+    } else {
+      // FOR OTHER BROWSERS
+      var link = document.createElement("a");
+      var csvUrl = URL.createObjectURL(blob);
+      link.href = csvUrl;
+      link.style = "visibility:hidden";
+      link.download = "AnnotationFolder1_ReIdentified.json";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+  generateDownloadJsonUri2() {
+    var csvData = JSON.stringify(this.assets.Folder2.json);
+    var blob = new Blob([csvData], {
+      type: "application/csv;charset=utf-8;"
+    });
+
+    if (window.navigator.msSaveBlob) {
+      // FOR IE BROWSER
+      navigator.msSaveBlob(blob, "AnnotationFolder2_ReIdentified.json");
+    } else {
+      // FOR OTHER BROWSERS
+      var link = document.createElement("a");
+      var csvUrl = URL.createObjectURL(blob);
+      link.href = csvUrl;
+      link.style = "visibility:hidden";
+      link.download = "AnnotationFolder2_ReIdentified.json";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+
 }
