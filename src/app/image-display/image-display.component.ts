@@ -46,19 +46,17 @@ export class ImageDisplayComponent implements OnInit {
 
   CropingXYtoPixels() {
     var annotation = this.personToDisplay.annotations[this.IndexToDisplay];
-    let standard_width = 110;
-    let standard_height = 160;
+    let standard_width = 150;
+    let standard_height = 200;
     var height = annotation.height;
     var width = annotation.width;
     var x = -annotation.x;
     var y = -annotation.y;
     this.myStyle = {
       "background-image": "url(" + this.url + ")",
-      //to change
       "background-size": standard_width / width * 640 + "px " + standard_height / height * 480 + "px ",
       "background-repeat": "no-repeat",
       "object-fit": "none",
-      //to change
       "background-position": (x * standard_width / annotation.width) + "px " + (y * standard_height / annotation.height) + "px",
       "width": standard_width + "px",
       "height": standard_height + "px",
