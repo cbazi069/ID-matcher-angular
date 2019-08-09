@@ -87,7 +87,6 @@ export class DownloadComponent implements OnInit {
       var link = document.createElement("a");
       var csvUrl = URL.createObjectURL(blob);
       link.href = csvUrl;
-      link.style = "visibility:hidden";
       link.download = "AnnotationFolder1_ReIdentified.json";
       document.body.appendChild(link);
       link.click();
@@ -108,7 +107,6 @@ export class DownloadComponent implements OnInit {
       var link = document.createElement("a");
       var csvUrl = URL.createObjectURL(blob);
       link.href = csvUrl;
-      link.style = "visibility:hidden";
       link.download = "AnnotationFolder2_ReIdentified.json";
       document.body.appendChild(link);
       link.click();
