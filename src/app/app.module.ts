@@ -11,7 +11,6 @@ import { CardComponent } from './card/card.component';
 import { ButtonsContainerComponent } from './buttons-container/buttons-container.component';
 import { ContenantImageComponent } from './contenant-image/contenant-image.component';
 import { ImageDisplayComponent } from './image-display/image-display.component';
-import { MousewheelDirective } from './mousewheel.directive';
 import { AlreadySeenCardComponent } from './already-seen-card/already-seen-card.component';
 import { DownloadComponent } from './download/download.component';
 
@@ -26,9 +25,8 @@ import { DownloadComponent } from './download/download.component';
     ButtonsContainerComponent,
     ContenantImageComponent,
     ImageDisplayComponent,
-    MousewheelDirective,
     AlreadySeenCardComponent,
-    DownloadComponent,
+    DownloadComponent
   ],
   imports: [
     BrowserModule,

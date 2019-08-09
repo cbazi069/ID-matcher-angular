@@ -82,19 +82,22 @@ export class ImageDisplayComponent implements OnInit {
   }
 
 
-  mouseWheelUpFunc() {
-    if (this.IndexToDisplay + 3 < this.personToDisplay.annotations.length) {
-      this.IndexToDisplay+=3;      
+  mouseWheelUpFunc(event) {
+    if (this.IndexToDisplay + 5 < this.personToDisplay.annotations.length) {
+      this.IndexToDisplay += 5;
       this.printImage();
     }
-    
+    else {
+      this.mouseWheelDownFunc(event);
+    }
+    return false;
   }
-  mouseWheelDownFunc() {
-    if (this.IndexToDisplay - 3 >= 0) {
-      this.IndexToDisplay-=3;
+  mouseWheelDownFunc(event) {
+    if (this.IndexToDisplay - 5 >= 0) {
+      this.IndexToDisplay-=5;
       this.printImage();
     }
-    
+    return false;
   }
   printImage() {
     var reader = new FileReader();

@@ -1,1 +1,2 @@
-<div *ngIf="personToDisplay" mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" [ngStyle]="myStyle" style="cursor:pointer" (click)="TogglePerson()" [class.SelectedPerson]="selected">
+<div *ngIf="personToDisplay" (contextmenu)="mouseWheelUpFunc($event)" [ngStyle]="myStyle" style="cursor:pointer" (click)="TogglePerson()" [class.SelectedPerson]="selected"></div>
+
