@@ -54,9 +54,11 @@ export class ImageDisplayComponent implements OnInit {
     var y = -annotation.y;
     this.myStyle = {
       "background-image": "url(" + this.url + ")",
+      //to change
       "background-size": standard_width / annotation.width * 640 + "px " + standard_height / annotation.width * 480 + "px ",
       "background-repeat": "no-repeat",
       "object-fit": "none",
+      //to change
       "background-position": x.toString() + "px " + y.toString() + "px",
       "width": standard_width + "px",
       "height": standard_height + "px",
