@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-header card-header-warning">
-    <h4 class="card-title">information about the folder {{info.num}}</h4>
-    <p class="card-category">please enter the required information</p>
+    <h4 class="card-title">Informations about the folder number {{info.num}}</h4>
+    <p class="card-category">Please enter the images related to the Json File.</p>
   </div>
   <div class="card-body">
     <div>
-      <p>Upload the json of the folder {{info.num}}</p>
+      <p>Upload the json of the folder number {{info.num}}</p>
       <div class="row">
         <div class="col-md-8">
           <input type="file" (change)="UploadedJson($event)" accept=".json" class="btn btn-warning btn-round ml-auto mr-auto">
@@ -16,7 +16,8 @@
       </div>
     </div>
     <div style="margin-top:10px;">
-      <p>locate the folder {{info.num}}</p>
+      <p>Locate the folder number {{info.num}}.</p>
+      <p class="text-danger">Warning : It can takes time if there is a lot of images. Just wait for the browser to be ready.</p>
       <div class="row">
         <div class="col-md-8">
           <input type="file" webkitdirectory directory (change)="UploadedImages($event)" accept=".png" class="btn btn-warning btn-round ml-auto mr-auto">

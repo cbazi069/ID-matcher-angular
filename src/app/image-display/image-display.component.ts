@@ -86,6 +86,7 @@ export class ImageDisplayComponent implements OnInit {
       this.printImage();
     return false;
   }
+
   getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
