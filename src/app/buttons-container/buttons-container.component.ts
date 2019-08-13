@@ -14,8 +14,8 @@ export class ButtonsContainerComponent implements OnInit {
   constructor(private assets: AssetsService, private sanitizer: DomSanitizer) { }
 
   mergeFunction() {
-    if (this.assets.SelectedPeople.Folder1.length + this.assets.SelectedPeople.Folder2.length + this.assets.SelectedPeople.BottomBar.length < 2) {
-      alert("Please select at least 2 people!")
+    if (this.assets.SelectedPeople.Folder1.length + this.assets.SelectedPeople.Folder2.length + this.assets.SelectedPeople.BottomBar.length < 1) {
+      alert("Please select at least 1 person!")
     }
     else {
       var objectSM = new SamePerson(this.assets.SelectedPeople, this.assets);
