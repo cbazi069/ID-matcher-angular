@@ -82,22 +82,14 @@ export class ImageDisplayComponent implements OnInit {
 
 
   mouseWheelUpFunc(event) {
-    if (this.IndexToDisplay + 5 < this.personToDisplay.annotations.length) {
-      this.IndexToDisplay += 5;
+      this.IndexToDisplay = this.getRndInteger(10, this.personToDisplay.annotations.length);
       this.printImage();
-    }
-    else {
-      this.mouseWheelDownFunc(event);
-    }
     return false;
   }
-  mouseWheelDownFunc(event) {
-    if (this.IndexToDisplay - 5 >= 0) {
-      this.IndexToDisplay-=5;
-      this.printImage();
-    }
-    return false;
+  getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
+  
   printImage() {
     var reader = new FileReader();
     reader.readAsDataURL(this.personToDisplay.frames[this.IndexToDisplay].file); // read file as data url
