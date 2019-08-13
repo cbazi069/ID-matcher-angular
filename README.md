@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# How does it works ?
+
+## First import all your files
+
+You'll need to have 2 Json files of annotations related to 2 Folders of images respectively. Import the first folder and its Json File on the first card and do the same on the other card. Then you can go to section 2 'id matcher'
+
+## Second the matching work
+
+You'll normaly see two cards with 6 people inside each. Start working by clicking on people to select them. If you have finish your selection of same people you can merge them with the merge button. If you click right on a person you will see different point of view of this person. If the images does not look like a person you can click on the "not a person" button (those images will be ignored). 
+
+## Third dowload
+
+After the sort, you can just download the new json file with the ids that are matching now. The first button gives you the new json file related to the folder you entred in the first place.
