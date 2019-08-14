@@ -22,9 +22,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## First import all your files
 
-You'll need to have 2 Json files of annotations related to 2 Folders of images respectively. Import the first folder and its Json File on the first card and do the same on the other card. Then you can go to section 2 'id matcher'
+You'll need to have 2 Json files of annotations related to 2 Folders of images respectively. Import the first folder and its Json File on the first card and do the same on the other card.
+
+![picture](imgGithub/imports.png)
+
+Then you can go to section 2 'id matcher'. Use the navbar :
+
+![picture](imgGithub/navbar.png)
 
 ## Second the matching work
+
+![picture](imgGithub/matcher.png)
+
+As you can see.
 
 You'll normaly see two cards with 6 people inside each. Start working by clicking on people to select them. If you have finish your selection of same people you can merge them with the merge button. If you click right on a person you will see different point of view of this person. If the images does not look like a person you can click on the "not a person" button (those images will be ignored). 
 
