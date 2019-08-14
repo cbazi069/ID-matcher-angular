@@ -36,7 +36,9 @@ Then you can go to section 2 'id matching'. Use the sidebar :
 
 As you can see.
 
-You'll normaly see two cards with 6 people inside each (2 and 3). Start working by clicking on people to select them. If you have finish your selection of same people you can merge them with the merge button (1). The people you have already merged are bllow the cards (4). You can still merge them with people inside the cards. If you click right on a person you will see different point of view of this person. If the images does not look like a person you can click on the "not a person" button (1)(those images will be ignored). 
+You'll normaly see two cards with 6 people inside each (2 and 3). Start working by clicking on people to select them. If you have finish your selection of same people you can merge them with the merge button (1). The people you have already merged are bellow the cards (4). You can still merge them with people inside the cards.
+
+If you click right on a person you will see different point of view of this person. If the images does not look like a person you can click on the "not a person" button (1)(those images will be ignored). 
 
 ## Third dowload
 
