@@ -31,3 +31,9 @@ You'll normaly see two cards with 6 people inside each. Start working by clickin
 ## Third dowload
 
 After the sort, you can just download the new json file with the ids that are matching now. The first button gives you the new json file related to the folder you entred in the first place.
+
+## Licensing
+
+- Copyright 2018 Creative Tim (https://www.creative-tim.com/?ref=mk-github-readme)
+
+- Licensed under MIT (https://github.com/creativetimofficial/material-kit/blob/master/LICENSE.md)
