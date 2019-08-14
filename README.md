@@ -22,11 +22,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## First import all your files
 
-You'll need to have 2 Json files of annotations related to 2 Folders of images respectively. Import the first folder and its Json File on the first card and do the same on the other card.
+You'll need to have 2 Json files of annotations related to 2 Folders of images respectively. Import the first folder and its Json File on the first card and do the same on the other card. Wait for the 4 checks.
 
 ![picture](imgGithub/imports.png)
 
-Then you can go to section 2 'id matcher'. Use the navbar :
+Then you can go to section 2 'id matching'. Use the sidebar :
 
 ![picture](imgGithub/navbar.png)
 
